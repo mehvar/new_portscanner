@@ -60,8 +60,9 @@ $today = date("D M j Y g:i:s a T");
 
 if(!is_numeric($startport)){echo ""; exit;}
 if(!is_numeric($endport)){echo "Ports are always numbers"; exit;}
-if ((1 < $startport) && ($startport > 65535)){echo 'Range is incorrect. Give between 1 - 65535';exit;};
-if ((1 < $startport) && ($endport > 65535)){echo 'Range is incorrect. Give between 1 - 65535';exit;};
+if (($startport < 1) || ($startport > 65535)){echo '<b>Range is incorrect. Give between 1 - 65535</b>';exit;};
+if (($endport < 1) || ($endport > 65535)){echo '<b>Range is incorrect. Give between 1 - 65535</b>';exit;};
+if (strlen($domain) > 88) {echo "<b>That definitely ain't a hostname</b>";exit;}
 if (strlen($domain) > 88) {echo "That definitely ain't a hostname";exit;}
 elseif (strlen($domain) < 4) {echo "";exit;}
 elseif (strlen($startport) < 1) {echo "";exit;}
